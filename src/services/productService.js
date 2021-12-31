@@ -1,6 +1,6 @@
 import http from "../services/httpService";
 
-const productApi = "http://localhost:8000/api/product";
+const productApi = "https://ptv-pms.herokuapp.com/api/product";
 
 export const getAllProducts = async () => {
   return await http.get(`${productApi}`);
