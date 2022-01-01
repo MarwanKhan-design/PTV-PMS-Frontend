@@ -1,6 +1,6 @@
 import http from "./httpService";
 
-const quotationApi = "https://ptv-pms.herokuapp.com/quotation";
+const quotationApi = "https://ptv-pms.herokuapp.com/api/quotation";
 
 export const getAllQuotations = async () => {
   return await http.get(`${quotationApi}`);

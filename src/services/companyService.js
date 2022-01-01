@@ -1,6 +1,6 @@
 import http from "../services/httpService";
 
-const companyApi = "https://ptv-pms.herokuapp.com/company";
+const companyApi = "https://ptv-pms.herokuapp.com/api/company";
 
 export const getAllCompanies = async () => {
   return await http.get(`${companyApi}`);
