@@ -1,6 +1,5 @@
 import moment from "moment";
-import React, { useState, Component, useRef } from "react";
-import { useEffect } from "react/cjs/react.development";
+import React, { useState, Component, useRef, useEffect } from "react";
 import HeaderPurchaseOrder from "../components/HeaderPurchaseOrder";
 import ReactToPrint from "react-to-print";
 
