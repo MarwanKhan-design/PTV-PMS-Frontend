@@ -1,7 +1,6 @@
-import React, { useEffect, useState, Component } from "react";
+import React, { useEffect, useState, Component, useRef } from "react";
 import { useParams } from "react-router";
 import ReactToPrint from "react-to-print";
-import { useRef } from "react/cjs/react.development";
 import { getQuotation } from "../services/quotationService";
 import PurchaseOrder from "./PurchaseOrder";
 
