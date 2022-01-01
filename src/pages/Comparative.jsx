@@ -95,7 +95,7 @@ export class ComparativeToPrint extends Component {
     const { quotation, findTotalPrice, leastPrice, leastCompany, findPrice } =
       this.props;
     return (
-      <div className="m-5" style={{ fontSize: "12px" }}>
+      <div className="m-5 invert" style={{ fontSize: "12px" }}>
         <table className="table table-bordered table-striped">
           <thead>
             <tr>

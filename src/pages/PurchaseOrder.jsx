@@ -68,7 +68,7 @@ export class PurchaseOrderToPrint extends Component {
     const { leastCompany, companyBids, findQuantity, findTotalPrice } =
       this.props;
     return (
-      <div className="container text-start portrait">
+      <div className="container text-start portrait invert">
         <center>
           <h4>Pakistan Television Corporation Limited</h4>
           <h4>Peshawar Center</h4>
