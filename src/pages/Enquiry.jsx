@@ -3,6 +3,8 @@ import React, { Component, Fragment, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import ReactToPrint from "react-to-print";
+import PurchaseEnquiry2ToPrint from "../components/PurchaseEnquiry2";
+import SpotCovering from "../components/SpotCovering";
 import { getQuotation } from "../services/quotationService";
 
 const Enquiry = () => {
@@ -39,6 +41,7 @@ const Enquiry = () => {
 
   return (
     <>
+      <PurchaseEnquiry2ToPrint />
       <center>
         <ReactToPrint
           trigger={() => (
@@ -54,6 +57,7 @@ const Enquiry = () => {
         date={new Date()}
         ref={printRef}
       />
+      <SpotCovering />
     </>
   );
 };
@@ -76,7 +80,7 @@ class EnquiryToPrint extends Component {
                     {companies &&
                       companies.map((company) => (
                         <Fragment key={company._id}>
-                          <tr className="fw-bold text-decoration-underline ">
+                          <tr className="fw-bold text-decoration-underline">
                             <td>
                               <Link
                                 to={`/quotation/enquiry/${quotation._id}/${company._id}`}

@@ -37,12 +37,17 @@ const QuotationTable = ({
                 >
                   Enquiry
                 </Link>{" "}
-                <button
-                  className="btn btn-success btn-sm"
+                {/* <button */}
+                {/* className="btn btn-success btn-sm" */}
+                {/* onClick={() => QuotationToUpdate(quotation)} */}
+                {/* > */}
+                <i
+                  class="fa fa-pencil-square-o fs-4 text-success"
+                  aria-hidden="true"
                   onClick={() => QuotationToUpdate(quotation)}
-                >
-                  Update
-                </button>{" "}
+                  style={{ cursor: "pointer" }}
+                ></i>
+                {/* </button>{" "} */}
               </td>
               <td>
                 {/* <Link
@@ -57,12 +62,19 @@ const QuotationTable = ({
                 >
                   Comparative
                 </Link>{" "}
-                <button
+                {/* <button
                   className="btn btn-danger btn-sm"
                   onClick={() => deleteAlert(quotation, removeQuotation)}
-                >
-                  Delete
-                </button>{" "}
+                > */}
+                <i
+                  class="fa fa-trash-o text-danger fs-4"
+                  onClick={() => deleteAlert(quotation, removeQuotation)}
+                  style={{ cursor: "pointer" }}
+
+                  // aria-hidden="true"
+                  // style={{ width: "20px" }}
+                ></i>
+                {/* </button>{" "} */}
               </td>
             </tr>
           ))}

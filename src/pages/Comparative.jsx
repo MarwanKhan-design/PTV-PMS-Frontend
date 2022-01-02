@@ -1,6 +1,7 @@
 import React, { useEffect, useState, Component, useRef } from "react";
 import { useParams } from "react-router";
 import ReactToPrint from "react-to-print";
+import BillCoveringToPrint from "../components/BillCovering";
 import { getQuotation } from "../services/quotationService";
 import PurchaseOrder from "./PurchaseOrder";
 
@@ -86,6 +87,7 @@ const Comparative = () => {
         findTotalPrice={findTotalPrice}
         leastPrice={leastPrice}
       />
+      <BillCoveringToPrint />
     </>
   );
 };
