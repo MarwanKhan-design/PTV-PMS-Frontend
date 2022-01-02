@@ -87,7 +87,11 @@ const Comparative = () => {
         findTotalPrice={findTotalPrice}
         leastPrice={leastPrice}
       />
-      <BillCoveringToPrint />
+      <BillCoveringToPrint
+        leastCompany={leastCompany}
+        leastPrice={leastPrice}
+        quotation={quotation}
+      />
     </>
   );
 };

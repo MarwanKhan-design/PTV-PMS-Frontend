@@ -41,7 +41,7 @@ const Enquiry = () => {
 
   return (
     <>
-      <PurchaseEnquiry2ToPrint />
+      <PurchaseEnquiry2ToPrint quotation={quotation} />
       <center>
         <ReactToPrint
           trigger={() => (
@@ -57,7 +57,7 @@ const Enquiry = () => {
         date={new Date()}
         ref={printRef}
       />
-      <SpotCovering />
+      <SpotCovering quotation={quotation} />
     </>
   );
 };

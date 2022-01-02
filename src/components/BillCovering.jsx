@@ -1,7 +1,8 @@
+import moment from "moment";
 import React, { Component, useRef } from "react";
 import ReactToPrint from "react-to-print";
 
-const BillCovering = () => {
+const BillCovering = ({ leastCompany, leastPrice, quotation }) => {
   const printRef = useRef();
   const pageStyle = `@page { size: portrait }`;
   return (
@@ -15,13 +16,20 @@ const BillCovering = () => {
           pageStyle={pageStyle}
         />
       </center>
-      <BillCoveringToPrint ref={printRef} />
+      <BillCoveringToPrint
+        ref={printRef}
+        leastPrice={leastPrice}
+        leastCompany={leastCompany}
+        quotation={quotation}
+      />
     </>
   );
 };
 
 export class BillCoveringToPrint extends Component {
   render() {
+    const { leastPrice, leastCompany, quotation } = this.props;
+    const date = new Date();
     return (
       <div className="invert">
         <center>
@@ -32,28 +40,38 @@ export class BillCoveringToPrint extends Component {
               <div className="col-md-6 text-start fw-bold">
                 Ref: PTV-P/1110/
               </div>
-              <div className="col-md-6 text-end fw-bold">Dated _________</div>
+              <div className="col-md-6 text-end fw-bold">
+                Dated {moment(date).format("DD/MM/YYYY")}
+              </div>
               <br />
               <br />
               <br />
-              <p>
+              <p className="text-start">
                 Placed Below is bill no. ____________ Dated ____________
-                amounting to Rs. _______ received from M/S _________
+                amounting to Rs. {leastPrice} received from M/S{" "}
+                {leastCompany.name}
                 <br />
-                This is in respect of supply of _________________________
-                against our purchase order no ____________ Dated ______________
+                This is in respect of supply of{" "}
+                <span className="fw-bold">
+                  {quotation.products[0] &&
+                    quotation.products[0].product.name + " "}
+                  {quotation.products[1] &&
+                    "," + quotation.products[1].product.name + " "}{" "}
+                </span>
+                etc against our purchase order no ____________ Dated
+                ______________
               </p>
-              <p>
+              <p className="text-start">
                 All the relevant documents duly by the concerned
                 personnel/officer are attached as purchase procedure. It is
                 certified that purchases have been made and received as per
                 purchase manual
               </p>
-              <p>
+              <p className="text-start">
                 All the documents are attached here with and the bill is in
                 accordance with purchase manual
               </p>
-              <p>
+              <p className="text-start">
                 General manager may kindly accord financial approval so that
                 amount may be payed to the supplier concerned
               </p>

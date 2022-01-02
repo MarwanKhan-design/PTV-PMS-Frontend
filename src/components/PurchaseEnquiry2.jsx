@@ -1,7 +1,8 @@
+import moment from "moment";
 import React, { Component, useRef } from "react";
 import ReactToPrint from "react-to-print";
 
-const PurchaseEnquiry2 = () => {
+const PurchaseEnquiry2 = ({ quotation }) => {
   const printRef = useRef();
   const pageStyle = `@page { size: portrait }`;
 
@@ -16,13 +17,15 @@ const PurchaseEnquiry2 = () => {
           pageStyle={pageStyle}
         />
       </center>
-      <PurchaseEnquiry2ToPrint ref={printRef} />
+      <PurchaseEnquiry2ToPrint ref={printRef} quotation={quotation} />
     </>
   );
 };
 
 export class PurchaseEnquiry2ToPrint extends Component {
   render() {
+    const { quotation } = this.props;
+    const date = new Date();
     return (
       <div className="invert">
         <center>
@@ -33,14 +36,22 @@ export class PurchaseEnquiry2ToPrint extends Component {
               <div className="col-md-6 text-start fw-bold">
                 Ref: PTV-P/1110/
               </div>
-              <div className="col-md-6 text-end fw-bold">Dated _________</div>
+              <div className="col-md-6 text-end fw-bold">
+                Dated {moment(date).format("DD/MM/YYYY")}
+              </div>
             </div>
             <br />
             <br />
             <p className="text-start">
               Pease below is purchase Requisition / Demand No. _________ Dated
-              _______ received from ________ regarding purchase of
-              ________________________
+              _______ received from ________ regarding purchase of{" "}
+              <span className="fw-bold">
+                {quotation.products[0] &&
+                  quotation.products[0].product.name + " "}
+                {quotation.products[1] &&
+                  "," + quotation.products[1].product.name + " "}{" "}
+              </span>
+              etc
             </p>
             <p className="text-start">
               In accordance with the instruction of PTV-HQs office Circular No.
