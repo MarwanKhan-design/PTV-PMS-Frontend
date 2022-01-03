@@ -17,6 +17,8 @@ const QuotationForm = ({
   handleSearch,
   loadProducts,
   addProduct,
+  clearSearchData,
+  searchQuery,
 }) => {
   const findPriceValue = (p, c) => {
     const price = formData.bids.find(
@@ -56,6 +58,7 @@ const QuotationForm = ({
             <br />
             <input
               type="text"
+              value={searchQuery.name}
               onChange={(e) => handleSearch("name", e.target.value)}
               id="name"
             />
@@ -65,6 +68,7 @@ const QuotationForm = ({
             <input
               type="text"
               onChange={(e) => handleSearch("unit", e.target.value)}
+              value={searchQuery.unit}
               id="unit"
             />
             <br />
@@ -76,7 +80,10 @@ const QuotationForm = ({
             </button>{" "}
             <button
               className="btn btn-primary mt-2"
-              onClick={(e) => addProduct(e)}
+              onClick={(e) => {
+                addProduct(e);
+                clearSearchData();
+              }}
             >
               Add Product
             </button>
@@ -125,7 +132,7 @@ const QuotationForm = ({
 
   return (
     <div>
-      <form>
+      <form autoComplete="off">
         <div className="row">
           <div className="form-group col-md-4">
             <label htmlFor="lastDate">Last Date</label>
@@ -153,15 +160,28 @@ const QuotationForm = ({
             {findError("qtype")}
           </div>
           <div className="form-group col-md-4">
-            <label htmlFor="qtype">Ref No</label>
+            <label htmlFor="rafNo">Ref No</label>
             <br />
             <input
               type="text"
-              id="qtype"
+              id="refNo"
               value={formData.refNo}
               onChange={(e) => handleDataChange("refNo", e.target.value)}
             />
-            {findError("qtype")}
+            {findError("refNo")}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col form-group">
+            <label htmlFor="from">From</label>
+            <br />
+            <input
+              type="text"
+              id="from"
+              value={formData.from}
+              onChange={(e) => handleDataChange("from", e.target.value)}
+            />
+            {findError("from")}
           </div>
         </div>
         <div className="row">

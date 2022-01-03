@@ -18,12 +18,12 @@ const CompanyTable = ({ companies, removeCompany, CompanyToUpdate }) => {
               <td>{company.name}</td>
               <td>{company.address}</td>
               <td>
-                <button
+                {/* <button
                   className="btn btn-danger btn-sm"
                   onClick={() => deleteAlert(company, removeCompany)}
                 >
                   Delete
-                </button>{" "}
+                </button>{" "} */}
                 <button
                   className="btn btn-success btn-sm"
                   onClick={() => CompanyToUpdate(company)}

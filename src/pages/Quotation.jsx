@@ -29,6 +29,7 @@ export class Quotations extends Component {
       lastDate: new Date(),
       qtype: "normal",
       refNo: "PTV-P/PS/1110/21-22",
+      from: "",
     },
     loading: true,
     formLoading: false,
@@ -37,6 +38,10 @@ export class Quotations extends Component {
     pages: [],
     currentPage: 1,
     searchQuery: { name: "", unit: "" },
+  };
+
+  clearSearchData = () => {
+    this.setState({ searchQuery: { name: "", unit: "" } });
   };
 
   async componentDidMount() {
@@ -93,6 +98,7 @@ export class Quotations extends Component {
       bids: Joi.array().required(),
       lastDate: Joi.date().required(),
       qtype: Joi.string(),
+      from: Joi.string(),
     };
 
     return Joi.validate(this.state.data, schema);
@@ -148,6 +154,7 @@ export class Quotations extends Component {
           qtype: "normal",
           lastDate: date.addDays(7),
           refNo: "PTV-P/PS/1110/21-22",
+          from: "",
           _id: false,
         },
       });
@@ -323,12 +330,14 @@ export class Quotations extends Component {
               loading={this.state.formLoading}
               products={this.state.products}
               companies={this.state.companies}
+              searchQuery={this.state.searchQuery}
               handleDataChange={this.handleDataChange}
               handleQuantity={this.handleQuantity}
               findQuantity={this.findQuantity}
               handleSearch={this.handleSearch}
               loadProducts={this.loadProducts}
               addProduct={this.addProduct}
+              clearSearchData={this.clearSearchData}
             />
           </div>
         </div>

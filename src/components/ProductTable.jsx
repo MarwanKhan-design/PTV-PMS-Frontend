@@ -18,12 +18,12 @@ const ProductTable = ({ products, removeProduct, ProductToUpdate }) => {
               <td>{product.name}</td>
               <td>{product.unit}</td>
               <td>
-                <button
+                {/* <button
                   className="btn btn-danger btn-sm"
                   onClick={() => deleteAlert(product, removeProduct)}
                 >
                   Delete
-                </button>{" "}
+                </button>{" "} */}
                 <button
                   className="btn btn-success btn-sm"
                   onClick={() => ProductToUpdate(product)}
