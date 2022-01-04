@@ -258,31 +258,47 @@ const QuotationForm = ({
             )}{" "}
           </div>
         </div>
-        <div className="row">
-          {formData.companies.map((c) => (
-            <Fragment key={c._id}>
-              <div className="col-6">
-                <p className="fs-5">{c.name}</p>
-                {formData.products.map((p) => (
-                  <Fragment key={p._id}>
-                    <div className="form-group">
-                      <label htmlFor={p.name + c.name}>{p.product.name}</label>
-                      <input
-                        type="number"
-                        id={p.name + c.name}
-                        value={findPriceValue(p, c)}
-                        className="form-control"
-                        onChange={(e) =>
-                          handlePriceChange(p, c, e.target.value)
-                        }
-                      />
+        {formData._id && (
+          <div className="row mt-5">
+            {formData.companies.map((c) => (
+              <Fragment key={c._id}>
+                <div
+                  class="card text-white bg-secondary mb-3"
+                  // style="max-width: 18rem;"
+                >
+                  <div class="card-header fw-bold fs-4 ">{c.name}</div>
+                  <div class="card-body">
+                    {/* <h5 class="card-title">Secondary card title</h5> */}
+                    {/* <p class="card-text">
+                      Some quick example text to build on the card title and
+                      make up the bulk of the card's content.
+                    </p> */}
+                    <div className="col-6">
+                      {formData.products.map((p) => (
+                        <Fragment key={p._id}>
+                          <div className="form-group">
+                            <label htmlFor={p.name + c.name}>
+                              {p.product.name}
+                            </label>
+                            <input
+                              type="number"
+                              id={p.name + c.name}
+                              value={findPriceValue(p, c)}
+                              className="form-control"
+                              onChange={(e) =>
+                                handlePriceChange(p, c, e.target.value)
+                              }
+                            />
+                          </div>
+                        </Fragment>
+                      ))}
                     </div>
-                  </Fragment>
-                ))}
-              </div>
-            </Fragment>
-          ))}
-        </div>
+                  </div>
+                </div>
+              </Fragment>
+            ))}
+          </div>
+        )}
         <button
           className="btn btn-primary mt-3"
           onClick={(e) => createQuotation(e)}
