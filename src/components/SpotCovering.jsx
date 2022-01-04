@@ -41,7 +41,7 @@ export class SpotCoveringToPrint extends Component {
             <br />
             <br />
             <p>
-              We had floated a purchase enquiry number _________________________
+              We had floated a purchase enquiry number  {quotation.refNo}_____
               Dated {moment(quotation.createdAt).format("DD/MM/YYYY")} amongst
               various suppliers for{" "}
               <span className="fw-bold">

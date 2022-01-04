@@ -43,8 +43,9 @@ export class PurchaseEnquiry2ToPrint extends Component {
             <br />
             <br />
             <p className="text-start">
-              Pease below is purchase Requisition / Demand No. _________ Dated
-              _______ received from ________ regarding purchase of{" "}
+              Pease below is purchase Requisition / Demand No.{" "}
+              {quotation.demandNumber} Dated {moment(date).format("DD/MM/YYYY")}{" "}
+              received from {quotation.from} regarding purchase of{" "}
               <span className="fw-bold">
                 {quotation.products[0] &&
                   quotation.products[0].product.name + " "}

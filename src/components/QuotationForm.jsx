@@ -133,60 +133,130 @@ const QuotationForm = ({
   return (
     <div>
       <form autoComplete="off">
-        <div className="row">
-          <div className="form-group col-md-4">
-            <label htmlFor="lastDate">Last Date</label>
-            <br />
-            <input
-              type="date"
-              id="lastDate"
-              value={formData.lastDate.toISOString().substr(0, 10)}
-              onChange={(e) => handleDataChange("lastDate", e.target.value)}
-            />
-
-            {findError("lastDate")}
-          </div>
-          <div className="form-group col-md-4">
-            <label htmlFor="qtype">Quotation Type</label>
-            <br />
-
-            <select
-              id="qtype"
-              onChange={(e) => handleDataChange("qtype", e.target.value)}
-            >
-              <option value="normal">Normal</option>
-              <option value="spot">Spot</option>
-            </select>
-            {findError("qtype")}
-          </div>
-          <div className="form-group col-md-4">
-            <label htmlFor="rafNo">Ref No</label>
-            <br />
-            <input
-              type="text"
-              id="refNo"
-              value={formData.refNo}
-              onChange={(e) => handleDataChange("refNo", e.target.value)}
-            />
-            {findError("refNo")}
-          </div>
-        </div>
-        <div className="row">
-          <div className="col form-group">
-            <label htmlFor="from">From</label>
-            <br />
-            <input
-              type="text"
-              id="from"
-              value={formData.from}
-              onChange={(e) => handleDataChange("from", e.target.value)}
-            />
-            {findError("from")}
+        <div class="card text-dark bg-info mb-3 mt-3">
+          <div class="card-header fs-4 fw-bold">Demand</div>
+          <div class="card-body">
+            <h5 class="card-title">Fill this from requisition form</h5>
+            <div className="row">
+              <div className="col form-group">
+                <label htmlFor="from">From</label>
+                <br />
+                <input
+                  type="text"
+                  id="from"
+                  value={formData.from}
+                  onChange={(e) => handleDataChange("from", e.target.value)}
+                />
+                {findError("from")}
+              </div>
+              <div className="col form-group">
+                <label htmlFor="demandDate">Demand Date</label>
+                <br />
+                <input
+                  type="date"
+                  id="demandDate"
+                  value={formData.demandDate}
+                  onChange={(e) =>
+                    handleDataChange("demandDate", e.target.value)
+                  }
+                />
+                {findError("demandDate")}
+              </div>
+              <div className="col form-group">
+                <label htmlFor="demandNumber">Demand Number</label>
+                <br />
+                <input
+                  type="text"
+                  id="demandNumber"
+                  value={formData.demandNumber}
+                  onChange={(e) =>
+                    handleDataChange("demandNumber", e.target.value)
+                  }
+                />
+                {findError("demandNumber")}
+              </div>
+            </div>
           </div>
         </div>
+        <div class="card text-dark bg-warning mb-3">
+          <div class="card-header">Enquiry</div>
+          <div class="card-body">
+            <div className="row">
+              <div className="form-group col">
+                <label htmlFor="lastDate">Last Date</label>
+                <br />
+                <input
+                  type="date"
+                  id="lastDate"
+                  value={formData.lastDate.toISOString().substr(0, 10)}
+                  onChange={(e) => handleDataChange("lastDate", e.target.value)}
+                />
+
+                {findError("lastDate")}
+              </div>
+              <div className="form-group col">
+                <label htmlFor="qtype">Q type</label>
+                <br />
+
+                <select
+                  id="qtype"
+                  onChange={(e) => handleDataChange("qtype", e.target.value)}
+                >
+                  <option value="normal">Normal</option>
+                  <option value="spot">Spot</option>
+                </select>
+                {findError("qtype")}
+              </div>
+              <div className="form-group col">
+                <label htmlFor="rafNo">Ref No</label>
+                <br />
+                <input
+                  type="text"
+                  id="refNo"
+                  value={formData.refNo}
+                  onChange={(e) => handleDataChange("refNo", e.target.value)}
+                />
+                {findError("refNo")}
+              </div>
+            </div>
+            <h5 class="card-title mt-4">Companies</h5>
+            {formData.companies.map((company) => (
+              <>{company.name}, </>
+            ))}
+
+            <h5 class="card-title mt-4">Products</h5>
+            {formData.products.map((product) => (
+              <>
+                {product.product.name}{" "}
+                <span className="fw-bold">
+                  ({findQuantity(product.product)})
+                </span>{" "}
+                ,{" "}
+              </>
+            ))}
+          </div>
+        </div>
+
         <div className="row">
-          <div className="col-6">{checkMap(products, "products")}</div>
-          <div className="col-6">{checkMap(companies, "companies")}</div>
+          <div className="col-6">
+            {products.length > 0 ? (
+              checkMap(products, "products")
+            ) : (
+              <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            )}{" "}
+          </div>
+          <div className="col-6">
+            {" "}
+            {companies.length > 0 ? (
+              checkMap(companies, "companies")
+            ) : (
+              <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            )}{" "}
+          </div>
         </div>
         <div className="row">
           {formData.companies.map((c) => (

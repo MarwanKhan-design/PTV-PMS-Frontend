@@ -30,6 +30,8 @@ export class Quotations extends Component {
       qtype: "normal",
       refNo: "PTV-P/PS/1110/21-22",
       from: "",
+      demandDate: "",
+      demandNumber: "",
     },
     loading: true,
     formLoading: false,
@@ -99,6 +101,8 @@ export class Quotations extends Component {
       lastDate: Joi.date().required(),
       qtype: Joi.string(),
       from: Joi.string(),
+      demandDate: Joi.string(),
+      demandNumber: Joi.string(),
     };
 
     return Joi.validate(this.state.data, schema);
@@ -313,12 +317,12 @@ export class Quotations extends Component {
           </div>
           <div className="col-md-5">
             {this.state.data._id ? (
-              <h4 className="bg-light" style={{ width: "fit-content" }}>
+              <h4 class="alert alert-success" role="alert">
                 Update a Quotation
               </h4>
             ) : (
-              <h4 className="bg-info" style={{ width: "fit-content" }}>
-                Create a new Quotation
+              <h4 class="alert alert-success" role="alert">
+                Create a Quotation
               </h4>
             )}
             <QuotationForm
