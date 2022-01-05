@@ -29,7 +29,7 @@ const QuotationTable = ({
                 {quotation.products[0] && quotation.products[0].product.name} ||{" "}
                 {quotation.products[1] && quotation.products[1].product.name}
               </td>
-              <td>{moment(quotation.lastDate).format("DD/MM/YYYY")}</td>
+              <td>{moment(quotation.lastDate).fromNow()}</td>
               <td>
                 <Link
                   className="btn btn-primary btn-sm"
