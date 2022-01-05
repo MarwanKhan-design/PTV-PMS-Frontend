@@ -32,6 +32,7 @@ export class Quotations extends Component {
       from: "",
       demandDate: "",
       demandNumber: "",
+      myBids: [],
     },
     loading: true,
     formLoading: false,

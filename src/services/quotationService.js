@@ -25,6 +25,8 @@ export const saveQuotation = async (quotation) => {
     const body = { ...quotation };
     delete body._id;
     delete body.__v;
+    delete body.createdAt;
+    delete body.updatedAt;
     if (quotation._id) {
       return http.put(`${quotationApi}/${quotation._id}`, body);
     } else {
