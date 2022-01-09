@@ -33,6 +33,7 @@ export class Quotations extends Component {
       demandDate: "",
       demandNumber: "PTV-P-",
       myBids: [],
+      forPTV: true,
     },
     loading: true,
     formLoading: false,
@@ -104,6 +105,7 @@ export class Quotations extends Component {
       from: Joi.string(),
       demandDate: Joi.string(),
       demandNumber: Joi.string(),
+      forPTV: Joi.boolean(),
     };
 
     return Joi.validate(this.state.data, schema);
@@ -132,7 +134,6 @@ export class Quotations extends Component {
         this.setState({ error: false });
       }
       const quotation = await saveQuotation(data);
-      console.log("&&&&&&&&&&&&&&&&&&", quotation.data);
       Date.prototype.addDays = function (days) {
         var date = new Date(this.valueOf());
         date.setDate(date.getDate() + days);
