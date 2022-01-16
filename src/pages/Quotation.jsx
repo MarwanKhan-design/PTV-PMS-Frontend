@@ -30,7 +30,7 @@ export class Quotations extends Component {
       qtype: "normal",
       refNo: "PTV-P/PS/1110/21-22",
       from: "News",
-      demandDate: "",
+      demandDate: new Date(),
       demandNumber: "PTV-P-",
       myBids: [],
       forPTV: true,
