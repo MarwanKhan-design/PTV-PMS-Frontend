@@ -121,9 +121,13 @@ class EnquiryToPrint extends Component {
           </div>
 
           {/* <div className="mt-5"> */}
-
+          <p className="fs-4 text-bold text-center">PURCHASE ENQUIRY</p>
+          <p>
+            Dear Sir, <br /> we shall oblige if you will let us have your lowest
+            quotation of the following goods{" "}
+          </p>
           <center>
-            <table className="table table-bordered mt-5">
+            <table className="table table-bordered">
               <thead>
                 <th>S.no</th>
                 <th>Description</th>

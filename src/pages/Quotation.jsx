@@ -42,6 +42,7 @@ export class Quotations extends Component {
     pages: [],
     currentPage: 1,
     searchQuery: { name: "", unit: "" },
+    loadingProducts: false,
   };
 
   clearSearchData = () => {
@@ -77,8 +78,9 @@ export class Quotations extends Component {
   };
   loadProducts = async () => {
     const { searchQuery } = this.state;
+    this.setState({ loadingProducts: true });
     const { data: products } = await searchProduct(searchQuery, 1, 9);
-    this.setState({ products });
+    this.setState({ products, loadingProducts: false });
   };
   handleSearch = (name, value) => {
     const searchQuery = this.state.searchQuery;
@@ -344,6 +346,7 @@ export class Quotations extends Component {
               loadProducts={this.loadProducts}
               addProduct={this.addProduct}
               clearSearchData={this.clearSearchData}
+              loadingProducts={this.state.loadingProducts}
             />
           </div>
         </div>

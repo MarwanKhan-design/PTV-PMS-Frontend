@@ -19,6 +19,7 @@ const QuotationForm = ({
   addProduct,
   clearSearchData,
   searchQuery,
+  loadingProducts,
 }) => {
   const findPriceValue = (p, c) => {
     const price = formData.bids.find(
@@ -238,15 +239,7 @@ const QuotationForm = ({
         </div>
 
         <div className="row">
-          <div className="col-6">
-            {products.length > 0 ? (
-              checkMap(products, "products")
-            ) : (
-              <div class="spinner-border text-danger" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-            )}{" "}
-          </div>
+          <div className="col-6">{checkMap(products, "products")}</div>
           <div className="col-6">
             {" "}
             {companies.length > 0 ? (
